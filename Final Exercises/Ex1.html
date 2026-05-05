@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercise 1 - Registration Form</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 350px;
+        }
+        label { font-weight: bold; }
+        input[type="text"], input[type="password"], input[type="file"] {
+            padding: 8px;
+            border: 1px solid #ccc;
+            width: 100%;
+        }
+        .error { color: red; font-size: 13px; display: none; }
+        #strength-bar { height: 8px; width: 0%; margin-top: 4px; }
+        #strength-text { font-size: 13px; }
+        button { padding: 8px 20px; background: #4CAF50; color: white; border: none; cursor: pointer; }
+        #success { color: green; font-weight: bold; display: none; }
+    </style>
+</head>
+<body>
+
+<h2>Exercise 1 - User Registration Form</h2>
+
+<div class="form-container">
+    <div>
+        <label>Username:</label>
+        <input type="text" id="username" placeholder="5-15 characters">
+        <span class="error" id="err-username">Username must be 5-15 characters.</span>
+    </div>
+    <div>
+        <label>Password:</label>
+        <input type="password" id="password" placeholder="Letters + numbers" oninput="checkStrength()">
+        <div id="strength-bar"></div>
+        <span id="strength-text"></span>
+        <span class="error" id="err-password">Password must contain letters and numbers.</span>
+    </div>
+    <div>
+        <label>Profile Picture:</label>
+        <input type="file" id="photo">
+        <span class="error" id="err-photo">Only JPG or PNG allowed.</span>
+    </div>
+    <button onclick="validateForm()">Register</button>
+    <p id="success">Registration successful!</p>
+</div>
+
+<script>
+    function checkStrength() {
+        var pw = document.getElementById("password").value;
+        var bar = document.getElementById("strength-bar");
+        var text = document.getElementById("strength-text");
+        var hasLetter = /[a-zA-Z]/.test(pw);
+        var hasNumber = /[0-9]/.test(pw);
+
+        if (pw.length === 0) {
+            bar.style.width = "0%"; text.textContent = "";
+        } else if (pw.length < 6 || !hasLetter || !hasNumber) {
+            bar.style.width = "33%"; bar.style.background = "red"; text.textContent = "Weak";
+        } else if (pw.length < 10) {
+            bar.style.width = "66%"; bar.style.background = "orange"; text.textContent = "Medium";
+        } else {
+            bar.style.width = "100%"; bar.style.background = "green"; text.textContent = "Strong";
+        }
+    }
+
+    function validateForm() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+        var file = document.getElementById("photo").files[0];
+        var isValid = true;
+
+        if (username.length < 5 || username.length > 15) {
+            document.getElementById("err-username").style.display = "block"; isValid = false;
+        } else { document.getElementById("err-username").style.display = "none"; }
+
+        var hasLetter = /[a-zA-Z]/.test(password);
+        var hasNumber = /[0-9]/.test(password);
+        if (!hasLetter || !hasNumber) {
+            document.getElementById("err-password").style.display = "block"; isValid = false;
+        } else { document.getElementById("err-password").style.display = "none"; }
+
+        if (!file) {
+            document.getElementById("err-photo").style.display = "block"; isValid = false;
+        } else {
+            var ext = file.name.split(".").pop().toLowerCase();
+            if (ext !== "jpg" && ext !== "jpeg" && ext !== "png") {
+                document.getElementById("err-photo").style.display = "block"; isValid = false;
+            } else { document.getElementById("err-photo").style.display = "none"; }
+        }
+
+        if (isValid) document.getElementById("success").style.display = "block";
+    }
+</script>
+</body>
+</html>

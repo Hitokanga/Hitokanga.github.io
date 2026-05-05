@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercise 7 - Contact Form</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .form-container {
+            width: 400px;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+        label { display: block; margin-top: 10px; font-weight: bold; }
+        input[type="text"], input[type="email"], textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 4px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        textarea { height: 100px; }
+        button { margin-top: 15px; padding: 8px 20px; cursor: pointer; }
+        #success { color: green; font-weight: bold; display: none; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<h2>Exercise 7 - Contact Form</h2>
+
+<div class="form-container">
+    <label>Name:</label>
+    <input type="text" id="name" placeholder="Enter your name">
+
+    <label>Email:</label>
+    <input type="email" id="email" placeholder="Enter your email">
+
+    <label>Message:</label>
+    <textarea id="message" placeholder="Enter your message"></textarea>
+
+    <button onclick="validateForm()">Submit</button>
+    <p id="success">Message sent successfully!</p>
+</div>
+
+<script>
+    function validateForm() {
+        var name = document.getElementById("name").value;
+        var email = document.getElementById("email").value;
+        var message = document.getElementById("message").value;
+
+        if (name === "" || email === "" || message === "") {
+            alert("Please fill in all fields!");
+        } else {
+            document.getElementById("success").style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>

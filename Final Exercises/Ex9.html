@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercise 9 - Product Showcase</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .product-grid {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .product-card {
+            border: 1px solid #ccc;
+            padding: 15px;
+            width: 180px;
+            box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+        }
+        .product-card:hover {
+            box-shadow: 4px 4px 12px rgba(0,0,0,0.2);
+        }
+        .product-card h3 { margin: 0 0 8px 0; font-size: 15px; }
+        .price { color: green; font-weight: bold; }
+        .product-card p { font-size: 13px; color: #555; margin: 6px 0 0 0; }
+        button { padding: 8px 20px; margin-bottom: 10px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<h2>Exercise 9 - Product Showcase</h2>
+<button onclick="togglePrice()">Toggle Price</button>
+
+<div class="product-grid">
+    <div class="product-card">
+        <h3>Laptop &reg;</h3>
+        <span class="price">&euro;899 &#8594;</span>
+        <p>High performance laptop for work and gaming.</p>
+    </div>
+    <div class="product-card">
+        <h3>Smartphone &reg;</h3>
+        <span class="price">&euro;499 &#8594;</span>
+        <p>Latest smartphone with great camera quality.</p>
+    </div>
+    <div class="product-card">
+        <h3>Headphones &reg;</h3>
+        <span class="price">&euro;149 &#8594;</span>
+        <p>Noise cancelling wireless headphones.</p>
+    </div>
+    <div class="product-card">
+        <h3>Smartwatch &reg;</h3>
+        <span class="price">&euro;199 &#8594;</span>
+        <p>Track your fitness and stay connected.</p>
+    </div>
+</div>
+
+<script>
+    function togglePrice() {
+        var prices = document.getElementsByClassName("price");
+        for (var i = 0; i < prices.length; i++) {
+            if (prices[i].style.display === "none") {
+                prices[i].style.display = "inline";
+            } else {
+                prices[i].style.display = "none";
+            }
+        }
+    }
+</script>
+
+</body>
+</html>

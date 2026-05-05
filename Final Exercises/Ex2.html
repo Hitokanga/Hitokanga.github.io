@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercise 2 - Computer Parts Price List</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        table {
+            border-collapse: collapse;
+            width: 60%;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #999;
+            padding: 8px 12px;
+            text-align: left;
+        }
+        th { background-color: #f2f2f2; }
+        button { padding: 8px 20px; margin-top: 10px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<h2>Exercise 2 - Computer Parts Price List &copy;</h2>
+
+<table id="myTable">
+    <tr>
+        <th>Part Name</th>
+        <th>Price (USD)</th>
+        <th>Brand</th>
+    </tr>
+    <tr>
+        <td>CPU Intel&trade; Core i5</td>
+        <td>$200 &bull;</td>
+        <td>Intel</td>
+    </tr>
+    <tr>
+        <td>RAM DDR4 8GB</td>
+        <td>$50 &bull;</td>
+        <td>Kingston</td>
+    </tr>
+    <tr>
+        <td>SSD 256GB</td>
+        <td>$80 &bull;</td>
+        <td>Samsung</td>
+    </tr>
+    <tr>
+        <td>GPU GTX 1650</td>
+        <td>$150 &bull;</td>
+        <td>NVIDIA&trade;</td>
+    </tr>
+</table>
+
+<button onclick="changeColor()">Change Color</button>
+
+<script>
+    function changeColor() {
+        var table = document.getElementById("myTable");
+        table.style.color = "red";
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercise 8 - Newsletter Subscription</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .form-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            width: 500px;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+        .full-width { grid-column: 1 / 3; }
+        label { font-weight: bold; display: block; margin-bottom: 4px; }
+        input[type="text"], input[type="email"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        button { padding: 8px 20px; cursor: pointer; }
+        #success { color: green; font-weight: bold; display: none; }
+        .error { color: red; font-size: 13px; display: none; }
+    </style>
+</head>
+<body>
+
+<h2>Exercise 8 - Newsletter Subscription</h2>
+
+<div class="form-container">
+
+    <div class="full-width">
+        <label>Full Name:</label>
+        <input type="text" id="fullname" placeholder="Enter your name">
+    </div>
+
+    <div class="full-width">
+        <label>Email:</label>
+        <input type="email" id="email" placeholder="Enter your email">
+        <span class="error" id="err-email">Email must contain @ and a domain.</span>
+    </div>
+
+    <div>
+        <label>Subscription Type:</label>
+        <input type="radio" name="subtype" value="monthly"> Monthly<br>
+        <input type="radio" name="subtype" value="yearly"> Yearly
+    </div>
+
+    <div>
+        <label>Interests:</label>
+        <input type="checkbox" class="interest" value="tech"> Technology<br>
+        <input type="checkbox" class="interest" value="sport"> Sports<br>
+        <input type="checkbox" class="interest" value="music"> Music<br>
+        <span class="error" id="err-interest">Please select at least one interest.</span>
+    </div>
+
+    <div class="full-width">
+        <button onclick="validateForm()">Subscribe</button>
+        <p id="success">Subscription successful!</p>
+    </div>
+
+</div>
+
+<script>
+    function validateForm() {
+        var fullname = document.getElementById("fullname").value;
+        var email = document.getElementById("email").value;
+        var interests = document.querySelectorAll(".interest:checked");
+        var isValid = true;
+
+        // Check email
+        if (email === "" || !email.includes("@") || email.split("@")[1] === "") {
+            document.getElementById("err-email").style.display = "block";
+            isValid = false;
+        } else {
+            document.getElementById("err-email").style.display = "none";
+        }
+
+        // Check at least one interest
+        if (interests.length === 0) {
+            document.getElementById("err-interest").style.display = "block";
+            isValid = false;
+        } else {
+            document.getElementById("err-interest").style.display = "none";
+        }
+
+        if (fullname === "") {
+            alert("Please enter your full name!");
+            isValid = false;
+        }
+
+        if (isValid) {
+            document.getElementById("success").style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>

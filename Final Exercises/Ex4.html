@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercise 4 - Restaurant Menu</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        h3 { margin-top: 20px; }
+        .menu-item { margin: 6px 0; }
+        button { padding: 8px 20px; margin-top: 15px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<h2>Exercise 4 - Restaurant Menu</h2>
+<button onclick="filterMenu()">Filter Menu</button>
+
+<h3>Appetizers &reg;</h3>
+<div class="menu-item vegetarian">&#8250; Spring Rolls - $3.00</div>
+<div class="menu-item">&#8250; Chicken Wings - $5.00</div>
+<div class="menu-item vegetarian">&#8250; Garden Salad - $4.00</div>
+
+<h3>Main Course &sect;</h3>
+<div class="menu-item">&#8250; Grilled Steak - $15.00</div>
+<div class="menu-item vegetarian">&#8250; Veggie Burger - $9.00</div>
+<div class="menu-item">&#8250; Salmon Fillet - $13.00</div>
+
+<h3>Desserts</h3>
+<div class="menu-item vegetarian">&#8250; Ice Cream - $4.00</div>
+<div class="menu-item vegetarian">&#8250; Fruit Cake - $5.00</div>
+
+<h3>Drinks</h3>
+<div class="menu-item vegetarian">&#8250; Orange Juice &ge; $2.00</div>
+<div class="menu-item">&#8250; Beer &ge; $3.00</div>
+
+<script>
+    var showAll = true;
+
+    function filterMenu() {
+        var items = document.getElementsByClassName("menu-item");
+        showAll = !showAll;
+        for (var i = 0; i < items.length; i++) {
+            if (showAll) {
+                items[i].style.display = "block";
+            } else {
+                if (items[i].classList.contains("vegetarian")) {
+                    items[i].style.display = "block";
+                } else {
+                    items[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
